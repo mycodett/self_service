@@ -1,0 +1,136 @@
+/* Basic reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+}
+
+/* Header styling */
+header {
+    background: #375B7F; /* Match sidebar color */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Main layout container */
+.container {
+    display: flex; /* Use flexbox to align items */
+    flex: 1; /* Allow this section to grow and take available space */
+    background: #ddd;
+}
+
+/* Sidebar menu styling */
+.menu {
+    width: 150px;
+    background: #375B7F;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    position: relative;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-left: 3px solid transparent;
+    transition: background 0.3s;
+}
+
+.menu ul li:hover {
+    background: rgba(59, 125, 221, 0.1);
+    border-left-color: #3b7ddd;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown menu styling */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0; /* Align with the top of the parent item */
+    left: 100%; /* Position to the right of the main menu */
+    background: #375B7F;
+    min-width: 150px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    padding: 10px;
+}
+
+.dropdown-content li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background: rgba(59, 125, 221, 0.1);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Main content area styling */
+.main-content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 5px; /* Add padding */
+    border-radius: 5px; /* Round corners */
+    background-color: white; /* Set background to white */
+    margin: 15px; /* Add margin around main content */
+}
+
+/* Footer styling */
+footer {
+    background: #375B7F; /* Match sidebar color */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+
+.main-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.main-content th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.main-content th {
+    background-color: #f2f2f2;
+}
+
+.main-content tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.main-content tr:hover {
+    background-color: #f1f1f1;
+}

@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+
+{% block admin-title %}Submit Notification{% endblock %}
+
+{% block admin-content %}
+
+<h1>Admin - Manage Notifications</h1>
+
+<h2>{% if editing %}Edit Notification{% else %}Create New Notification{% endif %}</h2>
+
+<!-- Form to Create or Edit Notification -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if editing %}Update{% else %}Submit{% endif %}</button>
+</form>
+
+<h2>Existing Notifications</h2>
+<table border="1">
+    <tr>
+        <th>Heading</th>
+        <th>Content</th>
+        <th>Actions</th>
+    </tr>
+    {% for notification in notifications %}
+    <tr>
+        <td>{{ notification.heading }}</td>
+        <td>{{ notification.content }}</td>
+        <td>
+            <!-- Edit Link -->
+            <a href="?edit={{ notification.id }}">Edit</a> | 
+            <!-- Delete Link -->
+            <a href="?delete={{ notification.id }}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No notifications available.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

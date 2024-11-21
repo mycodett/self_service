@@ -1,0 +1,28 @@
+{% extends "user_base.html" %}
+
+{% block user-title %}Submit Feedback{% endblock %}
+
+{% block user-content %}
+
+
+<h1>Submit Your Feedback</h1>
+
+    <!-- Display success message -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <p><a href="{% url 'user_feedback' %}">Go back to Feedback Page</a></p>
+
+
+{% endblock %}

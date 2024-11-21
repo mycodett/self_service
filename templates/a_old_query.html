@@ -1,0 +1,37 @@
+{% extends "admin_base.html" %}
+
+{% block admin-title %}Old Queries{% endblock %}
+
+{% block admin-content %}
+<h2>All Replied Queries</h2>
+
+        
+    <table>
+        <thead>
+            <tr>
+                <th>Ser</th> <!-- Serial Number -->
+                <th>User Name</th>
+                <th>PF No</th>
+                <th>PF Unit</th>
+                <th>User's Query</th>
+                <th>Admin's Reply</th>
+                {% comment %} <th>Submitted on</th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for query in all_queries %}
+                <tr>
+                    <td>{{ forloop.counter }}</td> <!-- Serial Number (1, 2, 3, ...) -->
+                    <td>{{ query.user.username }}</td>
+                    <td>{{ query.pf_no }}</td>
+                    <td>{{ query.pf_unit }}</td>
+                    <td>{{ query.description }}</td>
+                    <td>{{ query.admin_reply }}</td>
+                    {% comment %} <td>{{ query.created_at }}</td> {% endcomment %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% comment %} {% endfor %} {% endcomment %}
+{% endblock %}

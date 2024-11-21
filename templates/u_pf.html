@@ -1,0 +1,63 @@
+{% extends "user_base.html" %}
+
+{% block user-title %}Pay Fomrs Status{% endblock %}
+
+{% block user-content %}
+
+<form method="get">
+    <label for="cg_pno">P No. :</label>
+    <input type="text" name="cg_pno" id="cg_pno">
+
+    <label for="unit_descriptions">PF Unit :</label>
+    <input type="text" name="unit_descriptions" id="unit_descriptions">
+
+    <label for="form_no">PF No :</label>
+    <input type="text" name="form_no" id="form_no">
+
+    <label for="form_type">PF Type :</label>
+    <input type="text" name="form_type" id="form_type">
+
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+
+    <h2>Search Results</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ser</th> <!-- Serial Number -->
+                <th>P No</th>
+                <th>Name</th>
+                <th>PF Unit</th>
+                <th>Form no</th>
+                <th>Form Type</th>
+                <th>Status</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td> <!-- Serial Number (1, 2, 3, ...) -->
+                    <td>{{ item.cg_pno }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.unit_descriptions }}</td>
+                    <td>{{ item.form_no }}</td>
+                    <td>{{ item.form_type }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.verifier_remarks }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+
+
+
+
+{% endblock %}

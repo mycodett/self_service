@@ -1,0 +1,24 @@
+{% extends "user_base.html" %}
+
+{% block user-title %}Notifications{% endblock %}
+
+{% block user-content %}
+
+
+<h1 style='padding-top:10px; margin-left:20px'>All Notifications</h1>
+
+    {% if notifications %}
+    <div>
+        {% for notification in notifications %}
+        <div style='padding-top:10px; margin-left:20px'>
+            <h3>{{ notification.heading }}</h3>
+            <p>{{ notification.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No notifications available.</p>
+    {% endif %}
+
+
+{% endblock %}

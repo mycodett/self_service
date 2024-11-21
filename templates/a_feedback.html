@@ -1,0 +1,41 @@
+{% extends "admin_base.html" %}
+
+{% block admin-title %}Feedbacks{% endblock %}
+
+{% block admin-content %}
+
+
+<h1>All User Feedback</h1>
+
+    <!-- Display success message -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Table displaying all feedbacks -->
+    <table>
+        <tr>
+            <th>User Name</th>
+            <th>Subject</th>
+            <th>Feedback</th>
+            <th>Submitted At</th>
+        </tr>
+        {% for feedback in feedbacks %}
+        <tr>
+            <td>{{ feedback.user.username }}</td>
+            <td>{{ feedback.subject }}</td>
+            <td>{{ feedback.feedback }}</td>
+            <td>{{ feedback.created_at }}</td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+
+    <p><a href="{% url 'admin_feedback' %}">Refresh Feedback</a></p>
+
+
+{% endblock %}

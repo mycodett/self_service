@@ -1,0 +1,34 @@
+{% extends "admin_base.html" %}
+
+{% block admin-title %}All User Queries{% endblock %}
+
+{% block admin-content %}
+
+<h2>All User Queries</h2>
+
+{% if all_queries %}
+    {% for query in all_queries %}
+        <div>
+            {% comment %} <h3>{{ query.title }}</h3> {% endcomment %}
+            {% comment %} <p><strong>Category:</strong> {{ query.category }}</p> {% endcomment %}
+            <p><strong>{{ query.user.username }}</strong> </p>  <!-- Display user's name -->
+            <p>PF No:<strong> {{ query.pf_no }}</strong></p>
+            <p>PF Unit:<strong> {{ query.pf_unit }}</strong></p>
+            <p>{{ query.description }}</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="query_id" value="{{ query.id }}">  <!-- Hidden field for query ID -->
+                <label for="admin_reply">Reply:</label>
+                <textarea name="admin_reply" rows="4" cols="50" required></textarea><br><br>
+                <button type="submit">Submit Reply</button>
+                <p><em>Submitted on {{ query.created_at }}</em></p>
+            </form>
+            <hr>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No queries available for reply.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "user_base.html" %}
+
+{% block user-title %}My Queries{% endblock %}
+
+{% block user-content %}
+<h2>My Queries</h2>
+{% for query in queries %}
+    <div>
+        <h3>{{ query.title }}</h3>
+        <p>{{ query.description }}</p>
+        <p><strong>Category:</strong> {{ query.category }}</p>
+        <p><strong>Admin Reply:</strong> {{ query.admin_reply }}</p>  <!-- Correct field name -->
+        <p><em>Submitted on {{ query.created_at }}</em></p>
+    </div>
+{% endfor %}
+{% endblock %}
